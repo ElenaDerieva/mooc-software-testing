@@ -8,12 +8,17 @@ public class CaesarShiftCipher {
         int length = message.length();
 
         shift = shift%26;
+        if (length == 0){
+            return sb.toString();
+        }
 
         for(int i = 0; i < length; i++){
             currentChar = message.charAt(i);
-           
-            sb.append(currentChar);
-            if (currentChar > 'z' || currentChar < 'a') {
+
+            if (currentChar == ' '){
+                sb.append(currentChar);
+                continue;
+            } else if (currentChar > 'z' || currentChar < 'a') {
                 return "invalid";
             } else if ((char) (currentChar + shift) > 'z') {
                 currentChar = (char) (currentChar - 26);
